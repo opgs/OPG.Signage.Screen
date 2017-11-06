@@ -1,30 +1,34 @@
-﻿using Windows.ApplicationModel.Activation;
-using Windows.Foundation.Diagnostics;
+﻿using System.Diagnostics;
+using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace OPG.RPiIOT
+namespace OPG.Signage.Screen
 {
-    sealed partial class App : Application
+    public sealed partial class App : Application
     {
         public App()
         {
             InitializeComponent();
 
-            UnhandledException += App_UnhandledException;
+            UnhandledException += OnUnhandledException;
         }
 
-        private void App_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        private void OnUnhandledException(object sender, UnhandledExceptionEventArgs exception)
         {
-            e.Handled = true;
+            Debug.WriteLine(exception.Message);
+            exception.Handled = true;
         }
 
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override void OnLaunched(LaunchActivatedEventArgs args)
         {
-            Frame rootFrame = new Frame();
-            Window.Current.Content = rootFrame;
-            rootFrame.Navigate(typeof(MainPage), e.Arguments);
-            Window.Current.Activate();
+			if(args != null)
+			{
+				Frame rootFrame = new Frame();
+				Window.Current.Content = rootFrame;
+				rootFrame.Navigate(typeof(MainPage), args.Arguments);
+				Window.Current.Activate();
+			}
         }
     }
 }
