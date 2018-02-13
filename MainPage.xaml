@@ -1,11 +1,22 @@
 ﻿<Page
-    x:Class="OPG.Signage.Screen.MainPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" Width="1920" Height="1080">
+	x:Class="OPG.Signage.Screen.MainPage"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d" Width="1920" Height="1080">
 
-    <WebView x:Name="ScreenView" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" ManipulationMode="None" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" />
+	<Grid Name="gridView" Width="1920" Height="1080">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
 
+		<Grid.RowDefinitions>
+			<RowDefinition />
+		</Grid.RowDefinitions>
+
+		<WebView x:Name="ScreenView" Grid.Row="0" Grid.Column="0" FocusVisualPrimaryBrush="Transparent" FocusVisualSecondaryBrush="Transparent" ManipulationMode="None" IsHoldingEnabled="False" IsDoubleTapEnabled="False" IsRightTapEnabled="False" IsTapEnabled="False" />
+		<Rectangle Name="printRect" Grid.Row="0" Grid.Column="0" Width="1004" Height="732"/>
+	</Grid>
+	
 </Page>
