@@ -24,14 +24,11 @@ namespace OPG.Signage.Screen
 
 		protected override void OnLaunched(LaunchActivatedEventArgs args)
 		{
-			if (args != null)
-			{
-				LockApplicationHost host = LockApplicationHost.GetForCurrentView();
-				Frame rootFrame = new Frame();
-				Window.Current.Content = rootFrame;
-				rootFrame.Navigate(typeof(MainPage), args.Arguments);
-				Window.Current.Activate();
-			}
+			LockApplicationHost host = LockApplicationHost.GetForCurrentView();
+			Frame rootFrame = new Frame();
+			Window.Current.Content = rootFrame;
+			rootFrame.Navigate(typeof(MainPage), args.Arguments);
+			Window.Current.Activate();
 		}
 	}
 }
